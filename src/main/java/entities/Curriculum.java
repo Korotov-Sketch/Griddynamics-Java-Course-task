@@ -1,10 +1,10 @@
 package entities;
 
-public class CURRICULUM {
+public class Curriculum {
 
     private String description;
 
-    public CURRICULUM(String description) {
+    public Curriculum(String description) {
         this.description = description;
     }
 
@@ -14,9 +14,5 @@ public class CURRICULUM {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCURRICULUM() {
-        return (getDescription());
     }
 }
