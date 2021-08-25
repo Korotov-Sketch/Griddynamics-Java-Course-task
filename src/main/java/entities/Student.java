@@ -123,15 +123,7 @@ public class Student {
                 "to: %s \n Total duration of all courses (hours): %s \n Approximate end time of courses: %s\n" +
                 "Courses of %s:",getName(), getCurriculum().getDescription(), getStartDate().getTime(),
                 getWorkTimeFrom(), getWorkTimeTo(), getSummaryDurationOfCourses(), getEndOfCourseDate(), getName());
-        System.out.println("-------------");
         System.out.println(format);
-        System.out.println("-------------");
-        System.out.println(getName() + "\n" + getCurriculum().getDescription() +
-                "\nStart date: " + getStartDate().getTime() +
-                "\nWork time: From " + getWorkTimeFrom() + " to " + getWorkTimeTo() +
-                "\nTotal duration of all courses (hours): " + getSummaryDurationOfCourses() +
-                "\nApproximate end time of courses: " + getEndOfCourseDate() +
-                "\nCourses of " + getName() + ":");
         getAllCourses();
     }
 }
