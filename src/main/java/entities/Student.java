@@ -5,22 +5,22 @@ import java.util.*;
 public class Student {
 
     private String name;
-    private CURRICULUM curriculum;
-    private Calendar start_date;
-    private ArrayList<Course> courses;
+    private Curriculum curriculum;
+    private Calendar startDate;
+    private List<Course> courses;
     private int workTimeFrom;
     private int workTimeTo;
     private Date endOfCourseDate;
 
-    public Student(String name, CURRICULUM curriculum, Calendar start_date, ArrayList<Course> courses,
+    public Student(String name, Curriculum curriculum, Calendar startDate, List<Course> courses,
                    int workTimeFrom, int workTimeTo) {
         this.name = name;
         this.curriculum = curriculum;
-        this.start_date = start_date;
+        this.startDate = startDate;
         this.courses = courses;
         this.workTimeFrom = workTimeFrom;
         this.workTimeTo = workTimeTo;
-        this.endOfCourseDate = getEndOfCoursesDate();
+        this.endOfCourseDate = calculateEndOfCoursesDate();
     }
 
     public String getName() {
@@ -31,27 +31,27 @@ public class Student {
         this.name = name;
     }
 
-    public CURRICULUM getCurriculum() {
+    public Curriculum getCurriculum() {
         return curriculum;
     }
 
-    public void setCurriculum(CURRICULUM curriculum) {
+    public void setCurriculum(Curriculum curriculum) {
         this.curriculum = curriculum;
     }
 
-    public Calendar getStart_date() {
-        return start_date;
+    public Calendar getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(Calendar start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Calendar startDate) {
+        this.startDate = startDate;
     }
 
     public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
@@ -77,7 +77,7 @@ public class Student {
 
     public void getAllCourses() {
         for (Course c : courses) {
-            System.out.println(c.getCourseInfo());
+            System.out.println(c.toString());
         }
     }
 
@@ -89,11 +89,11 @@ public class Student {
         return coursesDuration;
     }
 
-    public Date getEndOfCoursesDate() {
+    public Date calculateEndOfCoursesDate() {
         Calendar tempCalendar = new GregorianCalendar();
-        tempCalendar.set(Calendar.YEAR, start_date.get(Calendar.YEAR));
-        tempCalendar.set(Calendar.MONTH, start_date.get(Calendar.MONTH));
-        tempCalendar.set(Calendar.DAY_OF_MONTH, start_date.get(Calendar.DAY_OF_MONTH));
+        tempCalendar.set(Calendar.YEAR, startDate.get(Calendar.YEAR));
+        tempCalendar.set(Calendar.MONTH, startDate.get(Calendar.MONTH));
+        tempCalendar.set(Calendar.DAY_OF_MONTH, startDate.get(Calendar.DAY_OF_MONTH));
         tempCalendar.set(Calendar.MINUTE, 0);
         tempCalendar.set(Calendar.SECOND, 0);
         tempCalendar.add(Calendar.HOUR, 1);
@@ -118,13 +118,12 @@ public class Student {
         return tempCalendar.getTime();
     }
 
-    public void getAllInfo() {
-        System.out.println(getName() + "\n" + getCurriculum().getCURRICULUM() +
-                "\nStart date: " + getStart_date().getTime() +
-                "\nWork time: From " + getWorkTimeFrom() + " to " + getWorkTimeTo() +
-                "\nTotal duration of all courses (hours): " + getSummaryDurationOfCourses() +
-                "\nApproximate end time of courses: " + getEndOfCourseDate() +
-                "\nCourses of " + getName() + ":");
+    public void printAllInfo() {
+        String format = String.format("Name: %s \nCurriculum: %s \nStart date: %s \nWork tome: from %s " +
+                "to: %s \n Total duration of all courses (hours): %s \n Approximate end time of courses: %s\n" +
+                "Courses of %s:",getName(), getCurriculum().getDescription(), getStartDate().getTime(),
+                getWorkTimeFrom(), getWorkTimeTo(), getSummaryDurationOfCourses(), getEndOfCourseDate(), getName());
+        System.out.println(format);
         getAllCourses();
     }
 }

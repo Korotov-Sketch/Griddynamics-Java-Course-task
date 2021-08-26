@@ -26,7 +26,8 @@ public class Course {
         this.duration = duration;
     }
 
-    public String getCourseInfo() {
+    @Override
+    public String toString() {
         return ("Name of course: " + getName() + " | Duration (hours): " + getDuration());
     }
 }
